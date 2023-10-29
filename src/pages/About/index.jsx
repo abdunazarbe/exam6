@@ -1,10 +1,14 @@
 
 
+import "./style.scss"
+
 const index = () => {
     return (
-        <div>
-            <h1>About</h1>
-        </div>
+        <section>
+            <div className="container">
+                <h1>About</h1>
+            </div>
+        </section>
     );
 };
 

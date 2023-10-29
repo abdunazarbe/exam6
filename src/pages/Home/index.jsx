@@ -1,17 +1,14 @@
-import {useEffect} from "react";
-import {Button} from "flowbite-react";
-import Layout from "../../components/Layout"
 
+
+import "./style.scss"
 
 const index = () => {
-
-  
-
     return (
-        <div>
-            <h1>Home</h1>
-            <Layout></Layout>
-        </div>
+        <section>
+            <div className="container">
+                <h1>Home</h1>
+            </div>
+        </section>
     );
 };
 
