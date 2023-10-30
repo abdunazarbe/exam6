@@ -1,10 +1,10 @@
 import "./style.scss";
-
+import Vuejs from "../../../assets/icons/vue.svg"
 const Card = () => {
   return (
     <div className="card">
       <img
-        src="https://picsum.photos/600/325"
+        src={Vuejs}
         alt="Image"
         className=" rounded-t-[20px]"
       />
