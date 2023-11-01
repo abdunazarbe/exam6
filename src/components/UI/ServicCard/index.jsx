@@ -47,7 +47,8 @@ const Serviccard = ({ state: { title, image, description } }) => {
 
     return (
         <div className="card1 ">
-            <img src={Image} alt="image" className="image" />
+         <img src={Image} alt="image" className="img" />
+
             <div className="texts">
                 <div className="texts_tepa">
                     <p>5,957 Students</p>

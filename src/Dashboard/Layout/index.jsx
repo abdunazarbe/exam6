@@ -7,7 +7,8 @@ const index = () => {
   return (
     <div className="ssss">
       <header className="flex items-center justify-between h-[80px] px-[50px] head text-green-400">
-        <a href="#"><p className="text-green-500">ADM SCHO0</p></a>
+        <Link to='/dashboard'><a href="#"><p className="text-green-500">Ebgub</p></a></Link>
+        
 
         <div className="flex items-center gap-5 login">
           <button className="flex items-center">
