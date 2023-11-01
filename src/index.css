@@ -16,6 +16,19 @@ ul {
   list-style-type: none;
 }
 
+.ant-btn-primary {
+  background: blue;
+}
+
+.modal_top {
+  padding: 6px 20px;
+  background: blue;
+  color: #FFFFFF;
+  max-width: fit-content;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
 body {
   font-family: sans-serif;
 }

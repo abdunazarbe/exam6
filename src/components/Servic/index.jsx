@@ -1,9 +1,19 @@
-import Image from "../../assets/images/card_image.png";
-import Korzinka from "../../assets/icons/korzinka.svg";
+import { useEffect, useState } from "react";
 import Ellipse from "../../assets/images/Ellipse.png";
 import "./style.scss";
+import ServicCard from "../../components/UI/ServicCard"
+import serviceApi from './../../service/services/index';
 
 const index = () => {
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    serviceApi.getAll().then((res) => {
+      setService(res.data.services);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
   return (
     <section id="services">
       <div className="container">
@@ -17,54 +27,12 @@ const index = () => {
           </div>
 
           <div className="service_cards">
-            <div className="card1 ">
-              <img src={Image} alt="image" className="image" />
-              <div className="texts">
-                <div className="texts_tepa">
-                  <p>5,957 Students</p>
-                  <h6>01h 49m</h6>
-                </div>
-                <p className="texts_uchd">
-                  Learn 3D Modelling and Design for Beginners
-                </p>
-                <div className="texts_pastt">
-                  <h5>$33.99</h5>
-                  <img src={Korzinka} alt="korzinka" className="" />
-                </div>
-              </div>
-            </div>
-            <div className="card2">
-              <img src={Image} alt="image" className="image" />
-              <div className="texts">
-                <div className="texts_tepa">
-                  <p>5,957 Students</p>
-                  <h6>01h 49m</h6>
-                </div>
-                <p className="texts_uchd">
-                  Learn 3D Modelling and Design for Beginners
-                </p>
-                <div className="texts_pastt">
-                  <h5>$33.99</h5>
-                  <img src={Korzinka} alt="korzinka" className="" />
-                </div>
-              </div>
-            </div>
-            <div className="card2">
-              <img src={Image} alt="image" className="image" />
-              <div className="texts">
-                <div className="texts_tepa">
-                  <p>5,957 Students</p>
-                  <h6>01h 49m</h6>
-                </div>
-                <p className="texts_uchd">
-                  Learn 3D Modelling and Design for Beginners
-                </p>
-                <div className="texts_pastt">
-                  <h5>$33.99</h5>
-                  <img src={Korzinka} alt="korzinka" className="korzinka" />
-                </div>
-              </div>
-            </div>
+            
+               {service.map((e) => {
+                return <ServicCard key={e._id} state={e} />;
+              })}
+            
+            
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const index = () => {
                 </a>
               </li>
             </ul>
-            <button className="">Join</button>
+             <link rel="stylesheet" href="/src/components/Login" />          <button className="">Join</button>
           </div>
         </nav>
       </div>

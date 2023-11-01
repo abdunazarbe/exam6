@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Card from "./../UI/Card/Card";
 import "./style.scss";
+import courseApi from "../../service/courses";
 const index = () => {
+
+  const [course, setCourse] = useState([]);
+
+  useEffect(() => {
+    courseApi.getAll().then((res) => {
+      setCourse(res.data.courses);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
+
   return (
     <section id="course" className="course">
       <div className="container">
@@ -16,8 +28,8 @@ const index = () => {
           </p>
 
           <div className="course__cards">
-            {"123456".split("").map((e) => {
-              return <Card />;
+            {course.map((e) => {
+              return <Card key={e._id} state={e} />;
             })}
           </div>
         </div>

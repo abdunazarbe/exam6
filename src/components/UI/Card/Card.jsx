@@ -1,12 +1,54 @@
 import "./style.scss";
 import Vuejs from "../../../assets/icons/vue.svg"
-const Card = () => {
+import React, { useState } from 'react';
+import { Form, Input, Select, Modal } from 'antd';
+
+const Card = ({ state: { title, image, description } }) => {
+  const MyFormItemContext = React.createContext([]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onFinish = (value) => {
+    console.log(value);
+  }
+  function toArr(str) {
+    return Array.isArray(str) ? str : [str];
+  }
+  const MyFormItemGroup = ({ prefix, children }) => {
+    const prefixPath = React.useContext(MyFormItemContext);
+    const concatPath = React.useMemo(() => [...prefixPath, ...toArr(prefix)], [prefixPath, prefix]);
+    return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
+  };
+  const MyFormItem = ({ name, ...props }) => {
+    const prefixPath = React.useContext(MyFormItemContext);
+    const concatName = name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
+    return <Form.Item name={concatName} {...props} />;
+  };
+
+  const onChange = (value) => {
+    // console.log(selected ${value});
+  };
+  const onSearch = (value) => {
+    // console.log('search:', value);
+  };
+
+  const filterOption = (input, option) =>
+    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
   return (
     <div className="card">
       <img
-        src={Vuejs}
+        src={image}
         alt="Image"
-        className=" rounded-t-[20px]"
+        className=" rounded-t-[20px] object-contain w-full"
       />
 
       <div className="about__card">
@@ -15,12 +57,12 @@ const Card = () => {
           <p>01h 49m</p>
         </div>
         <h1>
-          Vue.js form 0 to PRO course . Vue3 , Pinia , Design pattrens ...
+          {description.split(' ').slice(0, 2).join(' ')}
         </h1>
 
         <div className="card__price">
           <p>$1999.99</p>
-          <button>
+          <button onClick={() => showModal()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"
@@ -44,6 +86,23 @@ const Card = () => {
           </button>
         </div>
       </div>
+      <Modal open={isModalOpen} cancelText="Bekor qilish" onCancel={handleCancel} onOk={handleOk} okText="Jo'natish">
+        <div className='modal_top'>
+          <span>Kurslar</span>
+        </div>
+        <Form name="form_item_path" layout="vertical" onFinish={onFinish}>
+          <MyFormItemGroup prefix={['user']}>
+            <MyFormItemGroup prefix={['name']}>
+              <MyFormItem name="firstName" label="Ism familiya sharifingiz">
+                <Input placeholder='F.I.SH' required />
+              </MyFormItem>
+              <MyFormItem name="pnone_number" label="Telefon Raqamingiz">
+                <Input placeholder='90 000 00 00' />
+              </MyFormItem>
+            </MyFormItemGroup>
+          </MyFormItemGroup>
+        </Form>
+      </Modal>
     </div>
   );
 };

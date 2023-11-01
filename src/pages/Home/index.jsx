@@ -5,6 +5,7 @@ import Categories from "../../components/Categories";
 import Wishes from "../../components/Wishes";
 import Video from "../../components/Vsection";
 import Service from "../../components/Servic";
+import LoginForm from "../../components/Login";
 import "./style.scss";
 
 const index = () => {
@@ -17,6 +18,7 @@ const index = () => {
       <Wishes />
       <Video />
       <Service />
+      <LoginForm/>
     </>
   );
 };
