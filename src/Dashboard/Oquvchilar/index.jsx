@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Breadcrumb, Table, Modal, Select } from "antd";
 import { Link } from "react-router-dom";
 import "./style.scss";
-import studentApi from "../../service/Students";
+import studentApi from "../../service/students";
 
 const index = () => {
   const [stdData, setStdData] = useState([])
@@ -19,6 +19,8 @@ const index = () => {
     }
     return data
   })
+
+  
 
 
   const columns = [

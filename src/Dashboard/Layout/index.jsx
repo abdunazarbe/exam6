@@ -53,7 +53,7 @@ const index = () => {
                   <div className="flex items-center gap-1 user">
                     <i className="bx bxs-user-circle text-[30px]"></i>
                   </div>
-                  
+                  {localStorage.getItem('user')}
                 </Space>
               </a>
             </Dropdown>

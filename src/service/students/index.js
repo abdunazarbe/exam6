@@ -6,7 +6,8 @@ const headers = {
 };
 
 const studentApi = {
-    getAllStudent: () => api.get('/student', {headers})
+    getAllStudent: () => api.get('/student', {headers}),
+    updateBlog: (id,data) => api.patch(`/student/${id}`, data, {headers}),
 }
 
 export default studentApi;

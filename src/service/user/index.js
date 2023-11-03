@@ -7,6 +7,7 @@ const headers = {
 
 const userApi = {
     login: (data) => api.post('/admin/login',data),
+    getMe: () => api.get("/admin/get-my-data", {headers}),
 }
 
 export default userApi;
