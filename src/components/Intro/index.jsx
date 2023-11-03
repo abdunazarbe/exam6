@@ -23,7 +23,7 @@ const Header = () => {
                   Good <span>coaching</span> is good teaching & nothing else.
                   InshaaAlloh
                 </h1>
-                <button>Coureses</button>
+                <a href="#course"><button>Coureses</button></a>
                 <div>
                   <p>What do you want to learn today?</p>
                   <div>

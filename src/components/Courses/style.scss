@@ -18,6 +18,10 @@
       span {
         color: #2aaa94;
       }
+      &:hover {
+        text-decoration: underline;
+        color: blue;}
+    
     }
 
     .course__about {
@@ -31,6 +35,11 @@
       margin-top: 48px;
       margin-bottom: 94px;
     }
+    &:hover {
+      text-decoration: underline;
+      color: blue;}
+  
+  
 
     .course__cards {
       display: flex;
@@ -39,5 +48,6 @@
       justify-content: center;
       gap: 46px;
     }
+
   }
 }

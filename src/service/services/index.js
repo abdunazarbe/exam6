@@ -6,7 +6,8 @@ const headers = {
 }
 
 const serviceApi = {
-    getAll: () => api.get('/service')
+    getAll: () => api.get('/service'),
+    getAllService: () => api.get('/service', {headers})
 }
 
 export default serviceApi;

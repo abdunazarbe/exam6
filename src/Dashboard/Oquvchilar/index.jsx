@@ -1,64 +1,26 @@
-import React, { useState } from "react";
-import { Breadcrumb, Space, Table, Tag, Modal, Select } from "antd";
+import React, { useState, useEffect } from "react";
+import { Breadcrumb, Table, Modal, Select } from "antd";
 import { Link } from "react-router-dom";
 import "./style.scss";
-
-// const columns = [
-//   {
-//     title: "#",
-//     dataIndex: "number",
-//     key: "number",
-//   },
-//   {
-//     title: "F.I.Sh",
-//     dataIndex: "fish",
-//     key: "fish",
-//   },
-//   {
-//     title: "Telefon",
-//     dataIndex: "telefon",
-//     key: "telefon",
-//   },
-//   {
-//     title: "Kurs",
-//     dataIndex: "kurs",
-//     key: "kurs",
-//   },
-//   {
-//     title: "Ro'yxatdan o'tgan vaqt",
-//     dataIndex: "register",
-//     key: "register",
-//   },
-//   {
-//     title: "Holat",
-//     dataIndex: "holat",
-//     key: "x",
-//     render: () => <a>Active</a>,
-//   },
-//   {
-//     title: "Tahrirlash",
-//     dataIndex: "",
-//     key: "x",
-//     render: () => <a onClick={showModal}>Edit</a>,
-//   },
-// ];
-
-const handleChange = (value) => {
-  console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
-};
-const data = [
-  {
-    key: 1,
-    number: 1,
-    fish: "MOTABARXON",
-    telefon: "+998931341103",
-    kurs: "Bootcamp Foundation",
-    register: "10.10.2023",
-  },
-
-];
+import studentApi from "../../service/Students";
 
 const index = () => {
+  const [stdData, setStdData] = useState([])
+  const handleChange = (value) => {
+    console.log(value);
+  };
+
+  const data = stdData.map((item) => {
+    const data = {
+      fish: item.fullName,
+      telefon: item.phoneNumber,
+      kurs: item.courseId.title,
+      register: item.createdAt,
+    }
+    return data
+  })
+
+
   const columns = [
     {
       title: "#",
@@ -108,6 +70,16 @@ const index = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    studentApi.getAllStudent().then((res) => {
+      console.log(res.data);
+      setStdData(res.data.students);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
+
 
   return (
     <div className="std">

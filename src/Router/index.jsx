@@ -11,7 +11,7 @@ import Buyurtmachilar from "../Dashboard/Buyurtmachilar";
 import Xizmatlar from "../Dashboard/Xizmatlar";
 import NotFound from "../pages/NotFound";
 import SignIn from "../pages/SignIn";
-
+import User from "../Dashboard/User"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +54,10 @@ const router = createBrowserRouter([
         path: "/dashboard/xizmatlar",
         element: <Xizmatlar />,
       },
+      {
+        path: "/dashboard/user",
+        element: <User />,
+      }
     ],
   },
 ]);

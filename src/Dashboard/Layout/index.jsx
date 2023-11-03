@@ -1,8 +1,34 @@
 import React from "react";
 import { Outlet, NavLink, Link } from "react-router-dom";
-import { Breadcrumb } from "antd";
-import "./style.scss";
+import { Breadcrumb, Button, Dropdown, Space } from "antd";
 
+import "./style.scss";
+const items = [
+  
+  {
+    key: "0",
+    label: (
+      <Space className="flex items-center bg-green-300 text-white  gap-[2px]">
+        <Link to={`/dashboard/user`}>
+        <i class='bx bx-cog' ></i>{""} Sozlamalar
+        
+        </Link>
+    
+      </Space>
+    ),
+  },{
+    key: "1",
+    label: (
+      <Space className="flex items-center gap-[3px]">
+        <Link to={`/signin`}>
+        <i className='bx bx-left-arrow-alt text-[20px] '></i>Chiqish
+        </Link>
+    
+      </Space>
+    ),
+  },
+ 
+];
 const index = () => {
   return (
     <div className="ssss">
@@ -15,8 +41,22 @@ const index = () => {
             <i className="bx bx-menu text-[30px]"></i>
           </button>
           <div className="flex items-center gap-1 user">
-            <i className="bx bxs-user-circle text-[30px]"></i>
-            <p>User Name</p>
+          <Dropdown
+              className="text-[#553737] flex items-center"
+              menu={{
+                items,
+              }}
+              trigger={["click"]}
+            >
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  <div className="flex items-center gap-1 user">
+                    <i className="bx bxs-user-circle text-[30px]"></i>
+                  </div>
+                  
+                </Space>
+              </a>
+            </Dropdown>
           </div>
         </div>
       </header>
@@ -32,7 +72,7 @@ const index = () => {
             </li>
             <li>
               <NavLink to="/dashboard/oquvchilar" className="nav__link">
-                <i className="bx bx-child text-[24px] text-[#1b2336]"></i>
+                <i className="bx  bx-pencil text-[24px] text-[#1b2336]"></i>
                 <p>O'quvchilar</p>
               </NavLink>
             </li>
@@ -44,13 +84,13 @@ const index = () => {
             </li>
             <li>
               <NavLink to="/dashboard/buyurtmachilar" className="nav__link">
-                <i className="bx bxs-user-voice text-[24px] text-[#1b2336]"></i>
+                <i className="bx bx-user-circle text-[24px] text-[#1b2336]"></i>
                 <p>Buyurtmachilar</p>
               </NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/xizmatlar" className="nav__link">
-                <i className="bx bxs-taxi text-[24px] text-[#1b2336]"></i>
+                <i className="bx bxs-briefcase text-[24px] text-[#1b2336]"></i>
                 <p>Xizmatlar</p>
               </NavLink>
             </li>
